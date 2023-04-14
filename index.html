@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Re-imagine the Negative Prompt Algorithm: Transform 2D Diffusion into 3D, alleviate Janus problem and Beyond.">
+  <meta name="keywords" content="Diffusion models, text-to-image generation, negative prompts, perpendicular gradient">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Re-imagine the Negative Prompt Algorithm: Transform 2D Diffusion into 3D, alleviate Janus problem and Beyond.</title>
+
+  
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+ 
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Re-imagine the Negative Prompt Algorithm: Transform 2D Diffusion into 3D, alleviate Janus problem and Beyond.</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://web.stat.tamu.edu/~armand">Mohammadreza Armandpour</a><sup>*1</sup>,</span>
+            <span class="author-block">
+              <a href="https://huangjiezheng.com">Huangjie Zheng</a><sup>*2</sup>,</span>
+            <span class="author-block">
+              <a href="https://sites.google.com/site/sadeghian2050">Ali Sadeghian</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/amirabs">Amir Sadeghian</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://mingyuanzhou.github.io">Mingyuan Zhou</a><sup>2</sup>,
+            </span>
+          </div>
+            
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Texas A&M University,</span>
+            <span class="author-block"><sup>2</sup>The University of Texas at Austin, </span>
+            <span class="author-block"><sup>3</sup>Astroblox AI</span>
+          </div>
+
+          <div class="is-size-7 publication-authors">
+            <span class="author-block"><sup>*</sup>Equal contribution</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/Perp-Neg/Perp-Neg-stablediffusion"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://github.com/Perp-Neg/Perp-Neg-stablediffusion/blob/main/notebooks/demo.ipynb"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Colab</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="columns is-centered">
+        <div class="column is-4">
+          <video id="teaser-janus" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/janus.mp4"
+                    type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered">
+            Text-to-3D generation using Stable DreamFusion
+            </h2>
+        </div>
+        <div class="column is-4">
+          <video id="teaser-perpneg" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/perpneg.mp4"
+                    type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered">
+            Avoiding Janus problem in text-to-3D generation with Stable DreamFusion + <em>Perp-Neg </em>.
+            </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="columns is-centered"></div>
+        <div class="column is-10-centered">
+          <img src="./static/images/beyond.png"
+               class="interpolation-image"
+               alt="Interpolate start reference image."
+               width="90%"/>
+        </div>
+      </div>
+      <h2 class="subtitle has-text-centered">
+      The proposed <em>Perp-Neg </em> alleviates the Janus problem in text-to-3D generations, and achieves consistent view translation from side view to front view in the text-to-image generation task. Beyond that, it can also be used to generate natural 2D images while eliminating undersired attributes from the negative text descriptions. 
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Although text-to-image diffusion models have made significant strides in generating images from text, they are sometimes more inclined to generate images like the data on which the model was trained rather than the provided text. 
+            This limitation has hindered their usage in both 2D and 3D applications. 
+            To address this problem, we explored the use of negative prompts but found that the current implementation fails to produce desired results, particularly when there is an overlap between the main and negative prompts. 
+            To overcome this issue, we propose Perp-Neg, a new algorithm that leverages the geometrical properties of the score space to address the shortcomings of the current negative prompts algorithm. 
+            Perp-Neg does not require any training or fine-tuning of the model. 
+            Moreover, we experimentally demonstrate that Perp-Neg provides greater flexibility in generating images by enabling users to edit out unwanted concepts from the initially generated images in 2D cases. 
+            Furthermore, to extend the application of Perp-Neg to 3D, we conducted a thorough exploration of how Perp-Neg can be used in 2D to condition the diffusion model to generate desired views, rather than being biased toward the canonical views. 
+            Finally, we applied our 2D intuition to integrate Perp-Neg with the state-of-the-art text-to-3D (DreamFusion) method, effectively addressing its Janus (multi-head) problem.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+<div class="columns is-centered has-text-centered">
+  <div class="column is-four-fifths">
+    <h2 class="title is-3">Text-to-3D generation</h2>
+  </div>
+</div>
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-corgi">
+          <video poster="" id="corgi" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/corgi.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-westie">
+          <video poster="" id="westie" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/westie.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-lamborghini">
+          <video poster="" id="westie" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/lamborghini.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-pig">
+          <video poster="" id="corgi" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/pig.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-swan">
+          <video poster="" id="westie" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/swan.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-frog">
+          <video poster="" id="corgi" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/frog.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-collie">
+          <video poster="" id="westie" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/collie.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-mario">
+          <video poster="" id="westie" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/mario.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="columns is-centered has-text-centered">
+  <div class="column is-four-fifths">
+    <h2 class="title is-3">View-conditioned 2D generation</h2>
+  </div>
+</div>
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div class="column is-centered">
+        <div class="column is-8-centered has-text-centered">
+          <img src="./static/images/parrot.png"
+               class="2d-view-image"
+               alt="2d-view-interpolation-panda."
+               width="100%" />
+          <p> A parrot, side view &#8594 a parrot, front view </p>
+        </div>
+        <div class="column is-8-centered has-text-centered">
+          <img src="./static/images/panda.png"
+               class="2d-view-image"
+               alt="2d-view-interpolation-panda."
+               width="100%" />
+          <p> A panda, side view &#8594 a panda, front view </p>
+        </div>
+        <div class="column is-8-centered has-text-centered">
+          <img src="./static/images/lion.png"
+               class="2d-view-image"
+               alt="2d-view-interpolation-lion."
+               width="100%" />
+               <p> A lion, side view &#8594 a lion, front view </p>
+        </div>
+        <div class="column is-8-centered has-text-centered">
+          <img src="./static/images/leopard.png"
+               class="2d-view-image"
+               alt="2d-view-interpolation-leopard."
+               width="100%" />
+               <p> A snow leopard, side view &#8594 a snow leopard, front view </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Method. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Method explanation</h2>
+
+        <!-- General. -->
+        <h3 class="title is-4">General</h3>
+        <div class="content has-text-justified">
+          <p>
+            In each sampling iteration of the text-guided diffusion model, 
+            Perp-Neg find the perpendicular componenet of the negative prompt with respect to the main prompt.
+            In this way, the negative prompt is not biased toward the main prompt to help generate the image preserving
+            the requested attributes in the main prompt while eliminating the attribute described in the negative prompts.
+          </p>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-10 has-text-centered">
+            <img src="./static/images/explanation.png"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."/>
+            <p>Algorithm illustration</p>
+          </div>
+        </div>
+        <br/>
+        <!--/ General. -->
+
+        <!-- View condition. -->
+        <h3 class="title is-4">View conditioning</h3>
+        <div class="content has-text-justified">
+          <p>
+            We observe to generate correct conditioned view, leveraging negative prompt to eliminate the ambiguous views is helpful.
+            Thus we propose to use a combination of positive and negative prompts to condition the diffusion model to generate desired views, rather than being biased toward the canonical views.
+            For example, when the back view is desired, we can use the negative prompt to eliminate the front view and the side view.
+          </p>
+        </div>
+        <!--/ View condition. -->
+
+      </div>
+    </div>
+    <!--/ Animation. -->
+
+
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+
+    </code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/perpneg" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This website is built from the source code of <a
+              href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+            We thank the authors for the open-source code.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
