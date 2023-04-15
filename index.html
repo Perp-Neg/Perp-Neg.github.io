@@ -115,31 +115,44 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
+      <div class="column is-10-centered">
+        <h6 class="subtitle has-text-centered has-text-centered">Text: "A cute Corgi"</h6>
+      </div>
       <div class="columns is-centered">
         <div class="column is-4">
           <video id="teaser-janus" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/janus.mp4"
                     type="video/mp4">
           </video>
-          <h2 class="subtitle has-text-centered">
-            Text-to-3D generation using Stable DreamFusion
-            </h2>
+          <h4 class="subtitle has-text-centered">
+            Text-to-3D generation using Stable DreamFusion.
+            </h4>
         </div>
         <div class="column is-4">
           <video id="teaser-perpneg" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/perpneg.mp4"
                     type="video/mp4">
           </video>
-          <h2 class="subtitle has-text-centered">
+          <h4 class="subtitle has-text-centered">
             Avoiding Janus problem in text-to-3D generation with Stable DreamFusion + <em>Perp-Neg </em>.
-            </h2>
+          </h4>
         </div>
       </div>
     </div>
   </div>
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <div class="columns is-centered"></div>
+        <div class="column is-10-centered">
+          <img src="./static/images/demo2d.png"
+               class="interpolation-image"
+               alt="Interpolate start reference image."
+               width="90%"/>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container is-max-desktop">
+    <div class="hero-body">
         <div class="column is-10-centered">
           <img src="./static/images/beyond.png"
                class="interpolation-image"
@@ -148,7 +161,7 @@
         </div>
       </div>
       <h2 class="subtitle has-text-centered">
-      The proposed <em>Perp-Neg </em> alleviates the Janus problem in text-to-3D generations, and achieves consistent view translation from side view to front view in the text-to-image generation task. Beyond that, it can also be used to generate natural 2D images while eliminating undersired attributes from the negative text descriptions. 
+      The proposed <em>Perp-Neg </em> alleviates the Janus problem in text-to-3D generations, and achieves view generation in a more precise way in the text-to-image generation task. Beyond that, it can also be used to generate natural 2D images while eliminating undersired attributes from the negative text descriptions. 
       </h2>
     </div>
   </div>
